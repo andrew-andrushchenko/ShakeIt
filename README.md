@@ -1,4 +1,34 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
+# ShakeIt
+![Screen 1](/screenshots/banner.png "Screen 1")
+
+A multiplatform client application for [CocktailsAPI](https://cocktails.solvro.pl/)
+
+# Build
+Add this line to the project's **local.properties** file:
+```
+base_url=https://cocktails.solvro.pl/api/v1
+```
+
+# Currently supported platforms
+- :iphone: Android<sup>1</sup>
+- :computer: Desktop
+- :green_apple: iOS<sup>2</sup>
+
+> [!IMPORTANT]
+> ShakeIt is not yet tested in macOS or iOS environment because I don't have any Apple machines.
+> Planning to be fixed soon.
+
+# Technology stack
+* Kotlin Multiplatform
+* Compose Multiplatform (+ adaptive layouts)
+* Coroutines
+* Koin
+* Ktor client
+* Paging 3
+* Room
+* DataStore
+
+# About Kotlin Multiplatform project.
 
 * [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
@@ -42,7 +72,3 @@ in your IDE’s toolbar or run it directly from the terminal:
 
 To build and run the development version of the iOS app, use the run configuration from the run widget
 in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and run it from there.
-
----
-
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…

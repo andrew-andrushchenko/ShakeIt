@@ -39,9 +39,10 @@ kotlin {
     androidTarget {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
+            freeCompilerArgs.addAll("-P", "plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=com.andrii_a.shakeit.domain.util.PlatformParcelize")
         }
     }
-    
+
     listOf(
         iosArm64(),
         iosSimulatorArm64()
@@ -51,9 +52,9 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     jvm()
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
@@ -73,7 +74,8 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material3)
+            //implementation(compose.material3)
+            implementation(libs.material3expressive)
             implementation(compose.ui)
             implementation(compose.uiUtil)
             implementation(compose.components.resources)
@@ -84,6 +86,8 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+
+            implementation(libs.bundles.ktor)
 
             api(libs.koin.core)
             implementation(libs.koin.compose)
@@ -112,6 +116,9 @@ kotlin {
             implementation(libs.paging.compose)
 
             implementation(libs.constraintlayout)
+
+            implementation(libs.datastore)
+            implementation(libs.datastore.preferences)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -154,6 +161,13 @@ android {
 }
 
 dependencies {
+    listOf(
+        "kspAndroid",
+        //"kspIosX64",
+        "kspJvm"
+    ).forEach {
+        add(it, libs.room.compiler)
+    }
     debugImplementation(compose.uiTooling)
 }
 
